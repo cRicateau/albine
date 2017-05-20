@@ -1,0 +1,19 @@
+{
+  "dev": {
+    "driver": "postgres",
+    "database": "albine",
+    "user": "albine",
+    "password": "albine",
+    "host": "localhost",
+    "port": 5432
+  },
+  "production": {
+    "driver": "postgres",
+    "database": "albine",
+    "user": "albine",
+    "password": "albine",
+    "host": "localhost",
+    "port": 5432
+  },
+  "sql-file" : true
+}

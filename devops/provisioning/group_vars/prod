@@ -1,0 +1,18 @@
+---
+
+# List of databases to be created
+postgresql_databases:
+  - name: albine
+    hstore: yes
+    uuid_ossp: yes
+
+# List of users to be created
+postgresql_users:
+  - name: albine
+    pass: albine
+
+postgresql_user_privileges:
+  - name: albine
+    db: albine
+    priv: "ALL"
+    role_attr_flags: "SUPERUSER"
