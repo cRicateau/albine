@@ -47,7 +47,8 @@ module.exports = function(Sms) {
     });
 
     const tweetPromise = Sms.app.models.Tweet.find({
-      limit: 5
+      limit: 5,
+      orderBy: 'id DESC'
     });
 
     const modePromise = Sms.app.models.Mode.find();
