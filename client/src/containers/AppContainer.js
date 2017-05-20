@@ -6,7 +6,14 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import moment from 'moment-timezone';
 import Divider from 'material-ui/Divider';
+import {pink400, pink200} from 'material-ui/styles/colors';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: pink400,
+  },
+});
 
 class AppContainer extends Component {
   constructor(props) {
@@ -79,7 +86,7 @@ class AppContainer extends Component {
   render () {
     const messageList = this.state.data.tweets;
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <AppBar
             title="Envoyez vos messages par SMS au 06 44 60 66 67"
@@ -91,7 +98,7 @@ class AppContainer extends Component {
               return <div>
               <ListItem
                 key={index}
-                leftAvatar={<UserIcon style={{ width: '40px', height: '40px', color: 'rgb(0, 188, 212)' }}/>}
+                leftAvatar={<UserIcon style={{ width: '40px', height: '40px', color: pink200 }}/>}
                 primaryText={`${moment.tz(message.createdat, 'Europe/Paris').format('H:mm')}: ${message.content}`}
               />
                 <Divider inset={true} />
