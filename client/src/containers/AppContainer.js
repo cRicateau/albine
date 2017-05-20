@@ -44,7 +44,7 @@ class AppContainer extends Component {
   };
 
   getSms () {
-    return this.request('api/sms')
+    return this.request('api/sms?filter[order]=id%20DESC&filter[limit]=10')
     .then(result => {
       this.setState({
         sms: result.data,
@@ -64,12 +64,12 @@ class AppContainer extends Component {
     return (
       <div>
         <h1> Liste des messages </h1>
-        <h2> Envoyez vos messages au 06 44 60 66 67 </h2>
         {
           map(messageList, (message, index) => {
             return <div key={index}>{message.content}</div>
           })
         }
+        <h2> Envoyez vos messages au 06 44 60 66 67 </h2>
       </div>
     )
   }
