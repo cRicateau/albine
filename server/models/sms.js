@@ -9,13 +9,12 @@ module.exports = function(Sms) {
       accepts: [
         {arg: 'From', type: 'string', required: true, root: true},
         {arg: 'Body', type: 'string', required: true, root: true},
-        {arg: 'DateCreated', type: 'string', required: false, root: true},
       ],
       returns: {type: 'object', root: true},
     }
   );
 
-  Sms.save = function(From, Body, DateCreated) {
+  Sms.save = function(From, Body) {
     return Sms.upsert({
       sender: From,
       content: Body,

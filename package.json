@@ -4,6 +4,7 @@
   "main": "server/server.js",
   "scripts": {
     "lint": "eslint .",
+    "deploy": "shipit staging deploy",
     "test:backend": "NODE_ENV=test istanbul cover mocha -- tests/**/*.js -R spec",
     "test:frontend": "cd client && npm test",
     "test": "npm run test:backend && npm run test:frontend",
