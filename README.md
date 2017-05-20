@@ -1,11 +1,16 @@
 ## How to develop
+
+Go to
+
 all the logic is in three files:
 
 Frontend: client/src/container/AppContainer.js
 
 Backend:
 - server/models/sms.js
-- server/models/sms.json
+
+Models:
+- server/models/xxxxx.json
 - DB migrations in migrations/
 
 ## The deployment
@@ -57,29 +62,19 @@ You can browse a static page served by Loopback at the following url : `http://1
 - Down: `npm run migrate:down`
 - Up: `npm run migrate:up`
 
-### How to develop in local using webpack
+### How to develop in local
 
- Webpack can watch your frontend files and recompiles the code automatically as soon as you change your code (live-reloading).
-
- :bangbang: The webpack live-reloading is really slow in a vagrant. To avoid that, run the webpack-dev-server on your local environment:
+Run the webpack-dev-server on your local environment:
  - `cd client && npm run dev`.
 
+In an other terminal, start your vagrant and launch the node server:
 
- Think of the loopback server in the vagrant as an external API that you will query from your reactjs app.
+- `vagrant up`
+- `vagrant ssh`
+- `cd /var/www/albine/current && node server/server.js`
 
- In your local environment, all your HTTP requests should be redirected to the vagrant IP address.
+### Create data for your app
 
- For example, if you want to fetch the url `/api/users`, you can do it like this:
+The whole db is editable using the CRUD interface: http://10.0.0.10/explorer
 
- ```javascript
-
- let baseApiPath = '';
- let options = {};
-
- if (process.env.NODE_ENV === 'development') {
-   baseApiPath = 'https://10.0.0.10';
-   options.credentials = 'include'; // needed for CORS requests
- }
-
- fetch(`${baseApiPath}/api/users`, options)
- ```
+For example, to add a tweet: http://10.0.0.10/explorer/#!/Tweet/Tweet_create

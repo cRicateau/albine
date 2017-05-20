@@ -1,11 +1,23 @@
 import React, { Component, PropTypes } from 'react';
 import { map } from 'lodash';
+import { List, ListItem } from 'material-ui/List';
+import UserIcon from 'material-ui/svg-icons/notification/sms';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
+import moment from 'moment-timezone';
+import Divider from 'material-ui/Divider';
+
 
 class AppContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
+      data: {
+        tweets: [
+          { content: 'salut voici un message'},
+          { content: 'salut voici un message'},
+        ]
+      },
       interval: null,
     };
   }
@@ -14,17 +26,23 @@ class AppContainer extends Component {
     this.startPoll();
   }
 
-  request (url, options) {
-    const requestOptions = {
+  request (url) {
+    let baseApiPath = '';
+    let options = {
       credentials: 'same-origin',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       }
+    };
+
+    if (process.env.NODE_ENV === 'development') {
+      baseApiPath = 'http://10.0.0.10';
+      options.credentials = 'include'; // needed for CORS requests
     }
 
     let status;
-    return fetch(url, requestOptions)
+    return fetch(`${baseApiPath}/${url}`, options)
     .then((response) => {
       status = response.status;
       return response.json();
@@ -61,17 +79,28 @@ class AppContainer extends Component {
   render () {
     const messageList = this.state.data.tweets;
     return (
-      <div>
-        <h1> Liste des messages </h1>
-        <p>Votes albert {this.state.data.voteAlbert}</p>
-        <p>Votes pauline {this.state.data.votePauline}</p>
-        {
-          map(messageList, (message, index) => {
-            return <div key={index}>{message.content}</div>
-          })
-        }
-        <h2> Envoyez vos messages au 06 44 60 66 67 </h2>
-      </div>
+      <MuiThemeProvider>
+        <div>
+          <AppBar
+            title="Envoyez vos messages par SMS au 06 44 60 66 67"
+            showMenuIconButton={false}
+          />
+          <List>
+          {
+            map(messageList, (message, index) => {
+              return <div>
+              <ListItem
+                key={index}
+                leftAvatar={<UserIcon style={{ width: '40px', height: '40px', color: 'rgb(0, 188, 212)' }}/>}
+                primaryText={`${moment.tz(message.createdat, 'Europe/Paris').format('H:mm')}: ${message.content}`}
+              />
+                <Divider inset={true} />
+              </div>
+            })
+          }
+          </List>
+        </div>
+      </MuiThemeProvider>
     )
   }
 }
