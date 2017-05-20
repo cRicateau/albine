@@ -5,7 +5,7 @@ class AppContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sms: [],
+      data: [],
       interval: null,
     };
   }
@@ -44,10 +44,10 @@ class AppContainer extends Component {
   };
 
   getSms () {
-    return this.request('api/sms?filter[order]=id%20DESC&filter[limit]=10')
+    return this.request('api/sms/display')
     .then(result => {
       this.setState({
-        sms: result.data,
+        data: result.data,
       })
     });
   }
@@ -59,10 +59,12 @@ class AppContainer extends Component {
   }
 
   render () {
-    const messageList = this.state.sms;
+    const messageList = this.state.data.tweets;
     return (
       <div>
         <h1> Liste des messages </h1>
+        <p>Votes albert {this.state.data.voteAlbert}
+        <p>Votes albert {this.state.data.votePauline}
         {
           map(messageList, (message, index) => {
             return <div key={index}>{message.content}</div>

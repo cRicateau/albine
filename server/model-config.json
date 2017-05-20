@@ -31,5 +31,25 @@
   "Sms": {
     "dataSource": "db",
     "public": true
+  },
+  "Vote": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Tweet": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Mode": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Answer": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Question": {
+    "dataSource": "db",
+    "public": true
   }
 }

@@ -1,0 +1,24 @@
+{
+  "name": "Vote",
+  "plural": "votes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "options": {
+    "promisify": true
+  },
+  "properties": {
+    "albert": {
+      "type": "Number"
+    },
+    "pauline": {
+      "type": "Number"
+    },
+    "sender": {
+      "type": "String"
+    }
+  },
+  "acls": []
+}
