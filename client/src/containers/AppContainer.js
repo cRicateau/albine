@@ -63,8 +63,8 @@ class AppContainer extends Component {
     return (
       <div>
         <h1> Liste des messages </h1>
-        <p>Votes albert {this.state.data.voteAlbert}
-        <p>Votes albert {this.state.data.votePauline}
+        <p>Votes albert {this.state.data.voteAlbert}</p>
+        <p>Votes albert {this.state.data.votePauline}</p>
         {
           map(messageList, (message, index) => {
             return <div key={index}>{message.content}</div>

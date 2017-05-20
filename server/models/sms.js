@@ -18,18 +18,21 @@ module.exports = function(Sms) {
   );
 
   Sms.save = function(From, Body) {
+    // Everyime a sms is send, it is received here
+
     // Create a tweet in the database
-    return Sms.app.models.Tweet.upsert({
+    return Sms.app.models.Tweet.create({
       sender: From,
       content: Body,
     });
   };
 
+  // GET http://IP/api/sms/display
   Sms.remoteMethod(
     'display',
     {
       http: {verb: 'get', path: '/display'},
-      description: 'Create sms',
+      description: 'Get relevant data',
       returns: {type: 'object', root: true},
     }
   );
