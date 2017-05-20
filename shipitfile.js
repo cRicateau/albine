@@ -5,7 +5,7 @@ module.exports = function (shipit) {
     default: {
       workspace: '/tmp/albine',
       deployTo: '~/albine',
-      repositoryUrl: '',
+      repositoryUrl: 'git@github.com:cRicateau/albine.git',
       ignores: ['.git', 'tests', '.gitignore', 'devops', 'client/tests', 'node_modules', 'client/node_modules'],
       rsync: ['--del'],
       keepReleases: 3,
@@ -13,7 +13,7 @@ module.exports = function (shipit) {
       shallowClone: true,
     },
     staging: {
-      branch: 'staging',
+      branch: 'master',
       servers: 'www-data@13.58.99.30',
     },
     prod: {

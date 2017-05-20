@@ -1,8 +1,11 @@
 {
-  "name": "user",
-  "plural": "users",
-  "base": "User",
-  "strict": false,
+  "name": "sms",
+  "plural": "sms",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
   "options": {
     "promisify": true
   },
@@ -13,18 +16,10 @@
     }
   },
   "properties": {
-    "id": {
-      "type": "String",
-      "id": true,
-      "defaultFn": "uuid",
-      "postgresql": {
-        "dataType": "uuid"
-      }
-    },
-    "firstName": {
+    "content": {
       "type": "String"
     },
-    "lastName": {
+    "sender": {
       "type": "String"
     }
   },
