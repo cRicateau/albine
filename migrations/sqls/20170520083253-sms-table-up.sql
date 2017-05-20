@@ -1,5 +1,5 @@
 CREATE TABLE sms (
-    id UUID PRIMARY KEY,
+    id serial primary key,
     content text,
     sender text,
     createdat TIMESTAMP WITH TIME ZONE,
