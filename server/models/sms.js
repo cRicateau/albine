@@ -54,8 +54,8 @@ module.exports = function(Sms) {
       const tweets = JSON.parse(JSON.stringify(results[0]));
       const modes = JSON.parse(JSON.stringify(results[1]));
       const votes = JSON.parse(JSON.stringify(results[2]));
-      const voteAlbert = _.sum(votes, 'albert')
-      const votePauline = _.sum(votes, 'pauline')
+      const voteAlbert = _.sumBy(votes, 'albert')
+      const votePauline = _.sumBy(votes, 'pauline')
 
       const mode = modes.length > 0 ? modes[0].mode : null;
 
