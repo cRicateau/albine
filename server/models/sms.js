@@ -4,16 +4,21 @@ module.exports = function(Sms) {
   Sms.remoteMethod(
     'save',
     {
-      http: { verb: 'post', path: '/save' },
+      http: {verb: 'post', path: '/save'},
       description: 'Create sms',
       accepts: [
-        { arg: 'sms', type: 'number', required: true, root: true },
+        {arg: 'From', type: 'string', required: true, root: true},
+        {arg: 'Body', type: 'string', required: true, root: true},
+        {arg: 'DateCreated', type: 'string', required: false, root: true},
       ],
-      returns: { type: 'object', root: true },
+      returns: {type: 'object', root: true},
     }
   );
 
-  Sms.save = function(sms) {
-    return Sms.upsert(sms);
+  Sms.save = function(From, Body, DateCreated) {
+    return Sms.upsert({
+      sender: From,
+      content: Body,
+    });
   };
 };

@@ -1,22 +1,16 @@
 {
   "_meta": {
     "sources": [
-      "loopback/common/models",
       "loopback/server/models",
       "../common/models",
       "./models"
     ],
     "mixins": [
-      "loopback/common/mixins",
       "../node_modules/loopback-ds-timestamp-mixin",
       "loopback/server/mixins",
       "../common/mixins",
       "./mixins"
     ]
-  },
-  "Sms": {
-    "dataSource": "db",
-    "public": true
   },
   "AccessToken": {
     "dataSource": "memory",
@@ -33,5 +27,9 @@
   "Role": {
     "dataSource": "memory",
     "public": false
+  },
+  "Sms": {
+    "dataSource": "db",
+    "public": true
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "sms",
+  "name": "Sms",
   "plural": "sms",
   "base": "PersistedModel",
   "idInjection": true,
@@ -23,17 +23,5 @@
       "type": "String"
     }
   },
-  "acls": [
-    {
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "DENY"
-    },
-    {
-      "principalType": "ROLE",
-      "principalId": "admin",
-      "permission": "ALLOW",
-      "property": "*"
-    }
-  ]
+  "acls": []
 }
