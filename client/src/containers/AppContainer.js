@@ -49,7 +49,6 @@ class AppContainer extends Component {
       this.setState({
         sms: result.data,
       })
-      console.log('state', this.state);
     });
   }
 

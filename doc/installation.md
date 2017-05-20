@@ -1,6 +1,6 @@
 ## Installation
 
-### Installation
+### Local installation
 
 - Launch VM: `vagrant up`
 
@@ -13,7 +13,7 @@ cd /var/www/albine/current/client && npm rebuild node-sass
 cd ../ && npm run build:client
 ```
 
-- Run migration if needed:
+- Run migrations:
 ```
 cd /var/www/albine/current && npm run migrate:up
 ```
@@ -26,9 +26,14 @@ cd /var/www/albine/current && node server/server.js
 Now, you are set up !
 
 You can browse a static page served by Loopback at the following url : `http://10.0.0.10`
-You can also browse Loopback's explorer at : `http://10.0.0.10/explorer`
 
-### How to develop using webpack
+### Migrations to change the db structure:
+
+- Create: `npm run migrate:create`
+- Down: `npm run migrate:down`
+- Up: `npm run migrate:up`
+
+### How to develop in local using webpack
 
  Webpack can watch your frontend files and recompiles the code automatically as soon as you change your code (live-reloading).
 
@@ -54,9 +59,3 @@ You can also browse Loopback's explorer at : `http://10.0.0.10/explorer`
 
  fetch(`${baseApiPath}/api/users`, options)
  ```
-
-### Migrations:
-
-- Create: `npm run migrate:create`
-- Down: `npm run migrate:down`
-- Up: `npm run migrate:up`
