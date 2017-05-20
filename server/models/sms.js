@@ -40,6 +40,12 @@ module.exports = function(Sms) {
   Sms.display = function() {
     // Search in Loopback documentation to know how to query the db
 
+
+    // query all questions with a join ('include') of other models
+    const questionsPromise = Sms.app.models.Question.find({
+      include: ['modes', 'answers']
+    });
+
     const tweetPromise = Sms.app.models.Tweet.find({
       limit: 5
     });
@@ -47,13 +53,14 @@ module.exports = function(Sms) {
     const modePromise = Sms.app.models.Mode.find();
     const votePromise = Sms.app.models.Vote.find();
 
-    return Promise.all([tweetPromise, modePromise, votePromise])
+    return Promise.all([tweetPromise, modePromise, votePromise, questionsPromise])
     .then(results => {
 
       // Transform ORM object to pure javascript to be able to edit them
       const tweets = JSON.parse(JSON.stringify(results[0]));
       const modes = JSON.parse(JSON.stringify(results[1]));
       const votes = JSON.parse(JSON.stringify(results[2]));
+      const questions = JSON.parse(JSON.stringify(results[3]));
       const voteAlbert = _.sumBy(votes, 'albert')
       const votePauline = _.sumBy(votes, 'pauline')
 
@@ -63,7 +70,8 @@ module.exports = function(Sms) {
         tweets: tweets,
         mode: mode,
         voteAlbert: voteAlbert,
-        votePauline: votePauline
+        votePauline: votePauline,
+        questios: questions
       }
     });
   };
