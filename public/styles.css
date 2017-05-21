@@ -73,7 +73,7 @@ html, body {
 
 #tweets {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     flex-wrap: wrap;
     align-items: flex-start;
     height: calc(100% - 230px);
