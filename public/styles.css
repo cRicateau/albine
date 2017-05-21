@@ -174,9 +174,11 @@ html, body {
 #question, #message {
     text-align: center;
     padding: 40px;
+    font-family: 'Quicksand-bold', sans-serif;
+    font-weight: 700;
     padding-top: 80px;
     padding-bottom: 40px;
-    font-size: 40px;
+    font-size: 50px;
 }
 
 #question-instructions {
@@ -193,7 +195,9 @@ html, body {
 }
 
 #answer {
+    font-family: 'Quicksand-bold', sans-serif;
+    font-weight: 700;
     text-align: center;
-    font-size: 40px;
+    font-size: 50px;
     color: #ec407a;
 }
