@@ -57,7 +57,7 @@ html, body {
     text-align: center;
     height: 80px;
     line-height: 80px;
-    font-size: 40px;
+    font-size: 30px;
     vertical-align: middle;
     background-color: #ec407a;
     color: #ffffff;
@@ -73,26 +73,15 @@ html, body {
 
 #tweets {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     flex-wrap: wrap;
     align-items: flex-start;
     height: calc(100% - 230px);
     overflow: hidden;
 }
 
-#tweets:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: calc(100% - 231px);
-    border-right: 2px solid #ec407a;
-    z-index: 10;
-}
-
 #tweets div {
-    width: 50%;
+    width: 100%;
     font-size: 20px;
     text-align: center;
     padding: 20px;
