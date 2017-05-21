@@ -9,6 +9,7 @@ const levenshtein = require(path.join(__dirname, 'levenshtein'));
 // state variables represent the server current state.
 let mode = 'tweet';
 let questionId;
+let message;
 
 async function main() {
     try {
@@ -31,6 +32,8 @@ async function main() {
             } else if (mode == 'answer') {
                 state.question = await database.getQuestion(questionId);
                 state.answers = await database.getAnswers(questionId);
+            } else if (mode == 'display') {
+                state.message = message;
             } else {
                 throw new Error('unknown mode');
             }
@@ -104,6 +107,7 @@ async function main() {
                     if (data.mode == 'tweet') {
                         mode = 'tweet';
                         questionId = undefined;
+                        message = undefined;
                         response.writeHead(200, {'Content-Type': 'text/html'});
                         response.end();
                         await broadcastState();
@@ -115,6 +119,7 @@ async function main() {
                             && (await database.getQuestion(questionIdCandidate)) != null
                         ) {
                             questionId = questionIdCandidate;
+                            message = undefined;
                             mode = data.mode;
                             response.writeHead(200, {'Content-Type': 'text/html'});
                             response.end();
@@ -123,6 +128,13 @@ async function main() {
                             response.writeHead(400);
                             response.end('error: unknown question id\n');
                         }
+                    } else if (data.mode == 'display') {
+                        mode = 'display';
+                        questionId = undefined;
+                        message = data.message;
+                        response.writeHead(200, {'Content-Type': 'text/html'});
+                        response.end();
+                        await broadcastState();
                     } else {
                         response.writeHead(400);
                         response.end('error: unknown mode\n');

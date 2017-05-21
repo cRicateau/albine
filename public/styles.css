@@ -182,7 +182,7 @@ html, body {
     bottom: 20px;
 }
 
-#question {
+#question, #message {
     text-align: center;
     padding: 40px;
     padding-top: 80px;

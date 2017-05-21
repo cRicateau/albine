@@ -86,6 +86,8 @@ window.addEventListener('load', function() {
                 }
                 document.getElementById('bar-albert').style.width = ((window.innerWidth - 220) * lambda).toString() + 'px';
                 document.getElementById('bar-pauline').style.width = ((window.innerWidth - 220) * (1 - lambda)).toString() + 'px';
+            } else if (state.mode == 'display') {
+                content.innerHTML = '<div id="message">' + state.message + '</div>';
             }
         });
     }
