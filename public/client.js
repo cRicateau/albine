@@ -29,7 +29,7 @@ window.addEventListener('load', function() {
                 content.innerHTML = [
                     '<div id="tweets">',
                     state.tweets.map(function(tweet) {
-                        return '<div>' + tweet + '</div>';
+                        return '<div>' + (tweet.length > 140 ? tweet.slice(0, 140) + '...' : tweet) + '</div>';
                     }).join(''),
                     '</div>',
                     '<div id="coeurometre">',
