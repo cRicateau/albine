@@ -12,6 +12,7 @@ To change the operating mode, one must send a POST request to the server. The re
 - `mode=tweet` to switch to tweet mode
 - `mode=question&id=n` to switch to the question `n`, where `n` is an integer
 - `mode=answer&id=n` to switch to the answer to the question `n`, where `n` is an integer
+- `mode=display&message=x` to switch to the text `x`, where `x` is any charactet chain
 
 curl can be used to send the POST from a terminal and be notified if it fails:
 
