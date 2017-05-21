@@ -24,7 +24,7 @@ async function main() {
         const generateState = async () => {
             const state = {mode: mode};
             if (state.mode == 'tweet') {
-                state.tweets = await database.getMostRecentTweets(20);
+                state.tweets = await database.getMostRecentTweets(10);
                 state.votes = await database.getVotes();
             } else if (mode == 'question') {
                 state.question = await database.getQuestion(questionId);
@@ -86,9 +86,9 @@ async function main() {
                     response.writeHead(200, {'Content-Type': 'text/html'});
                     response.end();
                     if (mode == 'tweet') {
-                        if (levenshtein(data.Body.toLowerCase(), 'keur') < 2) {
+                        if (levenshtein(data.Body.toLowerCase(), 'keur') < 3) {
                             database.addVote(new Date(), data.From, 0);
-                        } else if (levenshtein(data.Body.toLowerCase(), 'love') < 2) {
+                        } else if (levenshtein(data.Body.toLowerCase(), 'love') < 3) {
                             database.addVote(new Date(), data.From, 1);
                         } else {
                             await database.addTweet(new Date(), data.From, data.Body);
