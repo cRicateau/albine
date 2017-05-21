@@ -1,0 +1,210 @@
+@font-face {
+    font-family: 'Quicksand-bold';
+    src: url('Quicksand-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Quicksand-bold';
+    src: url('Quicksand-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('Quicksand-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('Quicksand-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Quicksand-light';
+    src: url('Quicksand-Regular.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Quicksand-light';
+    src: url('Quicksand-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    font-family: inherit;
+}
+
+#header {
+    text-align: center;
+    height: 80px;
+    line-height: 80px;
+    font-size: 40px;
+    vertical-align: middle;
+    background-color: #ec407a;
+    color: #ffffff;
+}
+
+#header.disconnected {
+    color: #a0002e;
+}
+
+#content {
+    height: calc(100% - 80px);
+}
+
+#tweets {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    height: calc(100% - 230px);
+    overflow: hidden;
+}
+
+#tweets:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: calc(100% - 231px);
+    border-right: 2px solid #ec407a;
+    z-index: 10;
+}
+
+#tweets div {
+    width: 50%;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #cccccc;
+    overflow: hidden;
+    font-family: 'Quicksand-bold', sans-serif;
+}
+
+#coeurometre {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 230px;
+}
+
+#coeurometre #gauge {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 190px;
+}
+
+#coeurometre #gauge .bar {
+    position: absolute;
+    height: 50px;
+    top: 70px;
+    background-color: #ec407a;
+    color: #ffffff;
+    font-family: 'Quicksand-bold', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 40px;
+}
+
+#coeurometre #gauge .bar#bar-albert {
+    left: 100px;
+    text-align: right;
+}
+
+#coeurometre #gauge .bar#bar-pauline {
+    right: 100px;
+    text-align: left;
+}
+
+#coeurometre #gauge img {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    z-index: 10;
+}
+
+#coeurometre #gauge img.albert {
+    left: 20px;
+    bottom: 20px;
+}
+
+#coeurometre #gauge img.pauline {
+    right: 20px;
+    bottom: 20px;
+}
+
+#coeurometre #instructions {
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#coeurometre #instructions span {
+    position: absolute;
+    color: #ec407a;
+    font-family: 'Quicksand-bold', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+#coeurometre #instructions span.albert {
+    left: 20px;
+    bottom: 20px;
+}
+
+#coeurometre #instructions span.pauline {
+    right: 20px;
+    bottom: 20px;
+}
+
+#question {
+    text-align: center;
+    padding: 40px;
+    padding-top: 80px;
+    padding-bottom: 40px;
+    font-size: 40px;
+}
+
+#question-instructions {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    font-size: 30px;
+}
+
+#number-of-answers {
+    text-align: center;
+    font-size: 30px;
+    color: #ec407a;
+}
+
+#answer {
+    text-align: center;
+    font-size: 40px;
+    color: #ec407a;
+}
