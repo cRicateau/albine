@@ -169,6 +169,12 @@ async function main() {
                 ].indexOf(request.url) >= 0) {
                     response.writeHead(200, {'Content-Type': 'application/font-sfnt'});
                     fs.createReadStream(path.join(__dirname, 'public', request.url)).pipe(response);
+                } else if (request.url == '/mode') {
+                    response.writeHead(200, {'Content-Type': 'application/json'});
+                    response.end(JSON.stringify({mode: mode}));
+                } else if (request.url == '/database.db') {
+                    response.writeHead(200, {'Content-Type': 'application/octet-stream'});
+                    fs.createReadStream(path.join(__dirname, 'albineSms.db')).pipe(response);
                 } else {
                     response.writeHead(404);
                     response.end();
