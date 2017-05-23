@@ -170,8 +170,14 @@ async function main() {
                     response.writeHead(200, {'Content-Type': 'application/font-sfnt'});
                     fs.createReadStream(path.join(__dirname, 'public', request.url)).pipe(response);
                 } else if (request.url == '/mode') {
+                    const state = {mode: mode};
+                    if (mode == 'question' || mode == 'answer') {
+                        state.id = questionId;
+                    } else if (mode == 'display') {
+                        state.message = message;
+                    }
                     response.writeHead(200, {'Content-Type': 'application/json'});
-                    response.end(JSON.stringify({mode: mode}));
+                    response.end(JSON.stringify(state));
                 } else if (request.url == '/database.db') {
                     response.writeHead(200, {'Content-Type': 'application/octet-stream'});
                     fs.createReadStream(path.join(__dirname, 'albineSms.db')).pipe(response);
